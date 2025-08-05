@@ -7,7 +7,6 @@ function setup() {
   createCanvas(1920, 1080, WEBGL);
   terra = loadImage('terra.jpg');
   // Se tiver uma imagem para a lua, descomente a linha abaixo:
-  // lua = loadImage('lua.jpg');
 
   for (let i = 0; i < numEstrelas; i++) {
     estrelas[i] = {
