@@ -5,26 +5,30 @@ let numEstrelas = 500;
 function setup() {
   createCanvas(1920, 1080, WEBGL);
   terra = loadImage('terra.jpg');
-  
+
   for (let i = 0; i < numEstrelas; i++) {
     estrelas[i] = {
-      x: random(-width / 2, width / 2),
-      y: random(-height / 2, height / 2),
-      z: random(-1000, 1000)
+      // Posições X e Y maiores
+      x: random(-width, width),
+      y: random(-height, height),
+      // Z negativo e distante para que as estrelas fiquem no fundo
+      z: random(-3000, -1000)
     };
   }
 }
 
 function draw() {
   background(0, 0, 0);
-  
+
+  // Desenha as estrelas
   for (let i = 0; i < numEstrelas; i++) {
-    stroke(255);
-    strokeWeight(2);
+    stroke(255); // Cor branca para as estrelas
+    strokeWeight(3); // Aumenta o tamanho do ponto para ser visível
     point(estrelas[i].x, estrelas[i].y, estrelas[i].z);
   }
-  
-  rotateY(millis() / 8000);
+
+  // Rotação da terra
+  rotateY(millis() / 8000); // Diminuí a velocidade da rotação para ficar mais suave
   texture(terra);
   sphere(80, 100);
 }
