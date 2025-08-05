@@ -1,12 +1,12 @@
 let terra;
-let lua; // Variável para a textura da lua
+let lua;
 let estrelas = [];
 let numEstrelas = 500;
 
 function setup() {
   createCanvas(1920, 1080, WEBGL);
   terra = loadImage('terra.jpg');
-  lua = loadImage('lua.jpg'); // Descomentei e coloquei o nome do arquivo aqui
+  lua = loadImage('lua.jpg');
 
   for (let i = 0; i < numEstrelas; i++) {
     estrelas[i] = {
@@ -31,18 +31,20 @@ function draw() {
   push();
   rotateY(millis() / 8000);
 
-  // Desenha a Terra com a textura
+  // Desenha a Terra com tamanho maior
   texture(terra);
-  sphere(80, 100);
+  sphere(120, 100);
 
   // --- Lua orbitando a Terra ---
   push();
   rotateY(millis() / 4000);
-  translate(250, 0, 0);
+  
+  // Posiciona a lua mais longe da Terra, para não se sobrepor
+  translate(350, 0, 0);
 
-  // Desenha a Lua com a nova textura
-  texture(lua); // Agora a textura da lua é usada aqui
-  sphere(25, 50);
+  // Desenha a Lua com tamanho maior
+  texture(lua);
+  sphere(40, 50);
 
   pop();
   pop();
