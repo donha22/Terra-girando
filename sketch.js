@@ -33,18 +33,18 @@ function draw() {
 
   // Desenha a Terra com tamanho maior
   texture(terra);
-  sphere(120, 100);
+  sphere(350, 100);
 
   // --- Lua orbitando a Terra ---
   push();
   rotateY(millis() / 4000);
   
   // Posiciona a lua mais longe da Terra, para não se sobrepor
-  translate(350, 0, 0);
+  translate(800, 0, 0);
 
   // Desenha a Lua com tamanho maior
   texture(lua);
-  sphere(40, 50);
+  sphere(100, 50);
 
   pop();
   pop();
