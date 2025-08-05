@@ -6,7 +6,7 @@ let numEstrelas = 500;
 function setup() {
   createCanvas(1920, 1080, WEBGL);
   terra = loadImage('terra.jpg');
-  // Se tiver uma imagem para a lua, descomente a linha abaixo:
+  lua = loadImage('lua.jpg'); // Descomentei e coloquei o nome do arquivo aqui
 
   for (let i = 0; i < numEstrelas; i++) {
     estrelas[i] = {
@@ -28,39 +28,22 @@ function draw() {
   }
 
   // --- Sistema Terra-Lua ---
-
-  // Inicia as transformações para o sistema como um todo
   push();
-
-  // Rotação do sistema Terra-Lua
   rotateY(millis() / 8000);
 
-  // Desenha a Terra no centro
+  // Desenha a Terra com a textura
   texture(terra);
   sphere(80, 100);
 
   // --- Lua orbitando a Terra ---
-
-  // Inicia um novo conjunto de transformações para a Lua
   push();
-
-  // Rotação para a órbita da lua (velocidade diferente)
   rotateY(millis() / 4000);
-
-  // Posiciona a lua a uma distância da Terra
   translate(250, 0, 0);
 
-  // Se tiver a imagem da lua, usa a textura. Se não, usa uma cor.
-  if (lua) {
-    texture(lua);
-  } else {
-    fill(150); // Cor cinza para a lua
-  }
-  sphere(25, 50); // Esfera para a lua (menor que a Terra)
+  // Desenha a Lua com a nova textura
+  texture(lua); // Agora a textura da lua é usada aqui
+  sphere(25, 50);
 
-  // Termina as transformações da Lua
   pop();
-
-  // Termina as transformações do sistema Terra-Lua
   pop();
 }
